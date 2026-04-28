@@ -1,0 +1,25 @@
+Third-Party Code Notices
+
+This repository includes or adapts portions of the following open-source projects:
+
+1. Torchvision classification utilities
+   Source: https://github.com/pytorch/vision/blob/main/references/classification/utils.py
+   License: BSD 3-Clause License
+   Copyright (c) Soumith Chintala 2016, and torchvision contributors.
+   The original copyright notice, license conditions, and disclaimer are preserved.
+
+2. Tiny-ImageNet dataset loader
+   Source: https://github.com/lvyilin/pytorch-fgvc-dataset/blob/master/tiny_imagenet.py
+   License: MIT License
+   Copyright (c) 2020 lvyilin.
+   The original copyright and license notice are preserved.
+
+3. RLWE-IPFE
+   Source: https://github.com/fentec-project/IPFE-RLWE
+   License: MIT License.
+   The original copyright and license notice are preserved.
+
+4. ResNet-50 implementation reference
+   Source: https://github.com/bubbliiiing/faster-rcnn-pytorch
+   License: MIT License.
+   Used as an implementation reference and substantially modified for FE-compatible inference.
