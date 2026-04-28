@@ -21,13 +21,23 @@ This repository is provided for **academic research and reproducibility purposes
 # conda create -n fe_inference python=[x.xx]
 # conda activate fe_inference
 # [pytorch 등 필요한 라이브러리 설치 방법]
+# You can check the command corresponding to your GPU at https://pytorch.org/get-started/previous-versions/
+conda create -n qnet python=3.10
+conda activate qnet
+conda install pytorch==2.0.1 torchvision==0.15.2 torchaudio==0.2.2 pytorch-cuda=11.7 -c pytorch -c nvidia
+pip install pandas matplotlib numpy opencv-python-headless tqdm wandb beautifulsoup4 pyyaml scipy scikit-learn
+conda install pyqt=6
 ```
 
-2) You need to compile the FE-related C files. Enter the sm_xx corresponding to your GPU into the makefile.
+2) You need to compile the FE-related C files. Modify CUDA_ROOT_DIR value to your CUDA installation path. Then, enter the sm_xx corresponding to your GPU into the makefile.
 ```bash
 [makefile 어느 변수 고치는지, 어떻게 컴파일 하는지]
-# cd fe/
-# make
+# Open and modify Makefile
+nano Makefile
+# Modify CUDA_ROOT_DIR and sm_xx values
+
+# Compile
+make clean & make
 ```
 
 
@@ -56,14 +66,47 @@ FE-Compatible ResNet-50 utilizes information learned from plaintext.
 ```bash
 [Split, 평문 모델의 학습 명령어]
 # python ~~~.py ~~~~~~
+cd train
+
+# If you want to train CIFAR-10 dataset with all splits, use this command.
+chmod +x ./run_train_cifar10.sh
+./run_train_cifar10.sh
+
+# If you want to train CIFAR-10 dataset with each split, use this command.
+python train_cifar10.py --cusin 1
+python train_cifar10.py --cusin 2
+python train_cifar10.py --cusin 3
+python train_cifar10.py --cusin 4
+
+# If you want to train Tiny-ImageNet dataset with all splits, use this command.
+chmod +x ./run_train_tinet1.sh
+./run_train_tinet1.sh
+
+# If you want to train Tiny-ImageNet dataset with each split, use this command.
+python train_tinet_1.py --cusin 1
+python train_tinet_1.py --cusin 2
+python train_tinet_1.py --cusin 3
+python train_tinet_1.py --cusin 4
+
 ```
 Here, x specifies the split position, where x ∈ {1,2,3,4}.
 
 ### 3.2 Evaluation
 
+Tiny-ImageNet
 ```bash
 [Split, 평문 모델의 추론 명령어]
-# python ~~~.py ~~~~~~
+python -u test_tinet_pure.py --batch-size=128 --cusin=1
+python -u test_tinet_pure.py --batch-size=128 --cusin=2
+python -u test_tinet_pure.py --batch-size=128 --cusin=3
+python -u test_tinet_pure.py --batch-size=128 --cusin=4
+```
+CIFAR-10
+```bash
+python -u test_cifar10_pure.py --batch-size=128 --cusin=1
+python -u test_cifar10_pure.py --batch-size=128 --cusin=2
+python -u test_cifar10_pure.py --batch-size=128 --cusin=3
+python -u test_cifar10_pure.py --batch-size=128 --cusin=4
 ```
 Here, x specifies the split position, where x ∈ {1,2,3,4}.
 
@@ -74,7 +117,17 @@ The FE-compatible inference pipeline includes integer-domain encoding, cryptogra
 
 ```bash
 [Split 함수암호 모델의 추론 명령어]
-# python ~~~.py ~~~~~~
+# Tiny-ImageNet dataset
+python -u test_tinet.py --terms=2 --unknown=16 --batch-size=1 --sife-l=64 --cusin=1
+python -u test_tinet.py --terms=2 --unknown=16 --batch-size=1 --sife-l=128 --cusin=2
+python -u test_tinet.py --terms=2 --unknown=16 --batch-size=1 --sife-l=128 --cusin=3
+python -u test_tinet.py --terms=2 --unknown=16 --batch-size=1 --sife-l=128 --cusin=4
+
+# CIFAR-10 dataset
+python -u test_cifar10.py --terms=2 --unknown=16 --batch-size=1 --sife-l=64 --cusin=1
+python -u test_cifar10.py --terms=2 --unknown=16 --batch-size=1 --sife-l=128 --cusin=2
+python -u test_cifar10.py --terms=2 --unknown=16 --batch-size=1 --sife-l=128 --cusin=3
+python -u test_cifar10.py --terms=2 --unknown=16 --batch-size=1 --sife-l=128 --cusin=4
 ```
 Here, x specifies the split position, where x ∈ {1,2,3,4}.
 
