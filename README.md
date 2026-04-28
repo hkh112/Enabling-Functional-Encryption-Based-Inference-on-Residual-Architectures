@@ -31,7 +31,6 @@ conda install pyqt=6
 
 2) You need to compile the FE-related C files. Modify CUDA_ROOT_DIR value to your CUDA installation path. Then, enter the sm_xx corresponding to your GPU into the makefile.
 ```bash
-[makefile 어느 변수 고치는지, 어떻게 컴파일 하는지]
 # Open and modify Makefile
 nano Makefile
 # Modify CUDA_ROOT_DIR and sm_xx values
@@ -64,7 +63,6 @@ For comparison with the FE-compatible pipeline, we train/evaluate variants corre
 FE-Compatible ResNet-50 utilizes information learned from plaintext.
 
 ```bash
-[Split, 평문 모델의 학습 명령어]
 # python ~~~.py ~~~~~~
 cd train
 
@@ -89,13 +87,11 @@ python train_tinet_1.py --cusin 3
 python train_tinet_1.py --cusin 4
 
 ```
-Here, x specifies the split position, where x ∈ {1,2,3,4}.
 
 ### 3.2 Evaluation
 
 Tiny-ImageNet
 ```bash
-[Split, 평문 모델의 추론 명령어]
 python -u test_tinet_pure.py --batch-size=128 --cusin=1
 python -u test_tinet_pure.py --batch-size=128 --cusin=2
 python -u test_tinet_pure.py --batch-size=128 --cusin=3
@@ -108,7 +104,6 @@ python -u test_cifar10_pure.py --batch-size=128 --cusin=2
 python -u test_cifar10_pure.py --batch-size=128 --cusin=3
 python -u test_cifar10_pure.py --batch-size=128 --cusin=4
 ```
-Here, x specifies the split position, where x ∈ {1,2,3,4}.
 
 
 ### 3.3 FE-Compatible Inference
@@ -116,7 +111,6 @@ Here, x specifies the split position, where x ∈ {1,2,3,4}.
 The FE-compatible inference pipeline includes integer-domain encoding, cryptographic encryption/decryption operations, and stage-wise execution of the proposed architecture.
 
 ```bash
-[Split 함수암호 모델의 추론 명령어]
 # Tiny-ImageNet dataset
 python -u test_tinet.py --terms=2 --unknown=16 --batch-size=1 --sife-l=64 --cusin=1
 python -u test_tinet.py --terms=2 --unknown=16 --batch-size=1 --sife-l=128 --cusin=2
@@ -129,7 +123,6 @@ python -u test_cifar10.py --terms=2 --unknown=16 --batch-size=1 --sife-l=128 --c
 python -u test_cifar10.py --terms=2 --unknown=16 --batch-size=1 --sife-l=128 --cusin=3
 python -u test_cifar10.py --terms=2 --unknown=16 --batch-size=1 --sife-l=128 --cusin=4
 ```
-Here, x specifies the split position, where x ∈ {1,2,3,4}.
 
 
 ## 4. External Assets, Licenses, and Terms
