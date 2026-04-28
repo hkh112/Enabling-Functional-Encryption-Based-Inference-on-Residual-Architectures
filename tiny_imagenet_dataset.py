@@ -1,4 +1,7 @@
-# Copied from: https://github.com/lvyilin/pytorch-fgvc-dataset/blob/master/tiny_imagenet.py
+# Portions of this file are adapted from:
+# https://github.com/lvyilin/pytorch-fgvc-dataset/blob/master/tiny_imagenet.py
+# Licensed under the MIT License.
+# Original copyright and license notices are preserved where applicable.
 
 import os
 import os
