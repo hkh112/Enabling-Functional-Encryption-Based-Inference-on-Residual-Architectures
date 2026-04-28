@@ -1,3 +1,8 @@
+# Portions of this file are adapted from:
+# https://github.com/pytorch/vision/blob/main/references/classification/utils.py
+# Licensed under the BSD 3-Clause License.
+# Original copyright and license notices are preserved where applicable.
+
 import copy
 import datetime
 import errno
