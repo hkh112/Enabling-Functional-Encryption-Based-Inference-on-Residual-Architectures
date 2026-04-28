@@ -143,6 +143,8 @@ This repository uses or references the following external assets. Raw datasets a
 | ResNet-50 architecture | Backbone architecture for CIFAR-10 and Tiny-ImageNet experiments | He et al., "Deep Residual Learning for Image Recognition" | Original architecture cited in the paper. |
 | ResNet-50 implementation reference | Implementation reference for the ResNet-50 backbone | `bubbliiiing/faster-rcnn-pytorch` | MIT License. Our implementation was developed with reference to this MIT-licensed implementation and substantially modified for FE-compatible inference, including identity-branch replacement, dimensionality constraints, and integer-domain execution. |
 | RLWE-IPFE | Functional encryption implementation/component used in the FE-compatible inference pipeline | `fentec-project/IPFE-RLWE` | MIT License. The original copyright and license notice are preserved where applicable. |
+| Torchvision classification utilities | Training/evaluation utility functions adapted for experiment scripts | `pytorch/vision/references/classification/utils.py` | BSD 3-Clause License. Portions of the utility code are adapted from torchvision, and the original copyright, license conditions, and disclaimer are preserved where applicable. |
+| Tiny-ImageNet dataset loader | Tiny-ImageNet data loading and preprocessing utility | `lvyilin/pytorch-fgvc-dataset/tiny_imagenet.py` | MIT License. Portions of the dataset loader are adapted from this repository, and the original copyright and license notice are preserved where applicable. |
 
 
 ## 5. Responsible Release and Intended Use
