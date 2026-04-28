@@ -20,7 +20,6 @@ This repository is provided for **academic research and reproducibility purposes
 ```bash
 # conda create -n fe_inference python=[x.xx]
 # conda activate fe_inference
-# [pytorch 등 필요한 라이브러리 설치 방법]
 # You can check the command corresponding to your GPU at https://pytorch.org/get-started/previous-versions/
 conda create -n qnet python=3.10
 conda activate qnet
