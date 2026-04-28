@@ -61,47 +61,39 @@ These models are trained in plaintext and do not perform functional-encryption e
 For comparison with the FE-compatible pipeline, we train/evaluate variants corresponding to split points 1--4 and the dimensionality-constrained architecture used by the proposed method.
 FE-Compatible ResNet-50 utilizes information learned from plaintext.
 
-# If you want to train CIFAR-10 dataset with all splits, use this command.
 ```bash
+# If you want to train CIFAR-10 dataset with all splits, use this command.
 cd train
 chmod +x ./run_train_cifar10.sh
 ./run_train_cifar10.sh
-```
 
 # If you want to train CIFAR-10 dataset with each split, use this command.
-```bash
 python train_cifar10.py --cusin 1
 python train_cifar10.py --cusin 2
 python train_cifar10.py --cusin 3
 python train_cifar10.py --cusin 4
-```
 
 # If you want to train Tiny-ImageNet dataset with all splits, use this command.
-```bash
 chmod +x ./run_train_tinet1.sh
 ./run_train_tinet1.sh
-```
 
 # If you want to train Tiny-ImageNet dataset with each split, use this command.
-```bash
 python train_tinet_1.py --cusin 1
 python train_tinet_1.py --cusin 2
 python train_tinet_1.py --cusin 3
 python train_tinet_1.py --cusin 4
 ```
-```
 
 ### 3.2 Evaluation
 
-Tiny-ImageNet
 ```bash
+# Tiny-ImageNet
 python -u test_tinet_pure.py --batch-size=128 --cusin=1
 python -u test_tinet_pure.py --batch-size=128 --cusin=2
 python -u test_tinet_pure.py --batch-size=128 --cusin=3
 python -u test_tinet_pure.py --batch-size=128 --cusin=4
-```
-CIFAR-10
-```bash
+
+# CIFAR-10
 python -u test_cifar10_pure.py --batch-size=128 --cusin=1
 python -u test_cifar10_pure.py --batch-size=128 --cusin=2
 python -u test_cifar10_pure.py --batch-size=128 --cusin=3
